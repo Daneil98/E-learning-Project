@@ -41,6 +41,9 @@ class Module(models.Model):
     class Meta:
         ordering = ['order']
     
+    def render(self):
+        return render_to_string(f'courses/content/{self._meta.model_name}.html', {'item': self})
+    
     def _str_(self):
         return f'{self.order}. {self.title}'
     
@@ -64,10 +67,7 @@ class ItemBase(models.Model):
         abstract = True
     
     def _str_(self):
-        return self.title
-    
-    def render(self):
-        return render_to_string(f'courses/content/{self._meta.model_name}.html', {'item': self})
+        return self.title 
     
 class Text(ItemBase):
     content = models.TextField()

@@ -16,14 +16,13 @@ from pathlib import Path
 import os
 import sys
 from django.urls import reverse_lazy
-
+LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
-LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
+    'embed_video',
 ]
 
 MIDDLEWARE = [
